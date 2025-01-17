@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Meu Canal de Marketing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .brain-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+
+        .brain-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .brain-area {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .brain-area.active {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .brain-text {
+            font-size: 12px;
+            fill: #333;
+            pointer-events: none;
+        }
+
+        .folder-section {
+            display: none;
+            margin-top: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .folder-section.active {
+            display: block;
+        }
+
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Marketing</h1>
+        
+        <div class="brain-container">
+            <svg class="brain-svg" viewBox="0 0 800 600">
+                <!-- Cérebro anatômico base -->
+                <path d="M400 100 C 500 100, 600 150, 650 250 C 700 350, 650 450, 550 500 C 450 550, 350 550, 250 500 C 150 450, 100 350, 150 250 C 200 150, 300 100, 400 100" fill="white" stroke="#333" stroke-width="2"/>
+                
+                <!-- Sulcos e giros do cérebro -->
+                <path d="M200 200 C 250 180, 300 190, 350 200" fill="none" stroke="#333" stroke-width="1"/>
+                <path d="M450 200 C 500 180, 550 190, 600 200" fill="none" stroke="#333" stroke-width="1"/>
+                <path d="M300 300 C 350 280, 400 290, 450 300" fill="none" stroke="#333" stroke-width="1"/>
+                <path d="M250 400 C 300 380, 350 390, 400 400" fill="none" stroke="#333" stroke-width="1"/>
+                
+                <!-- Áreas interativas -->
+                <path id="design-thinking" d="M200 150 Q 250 120, 300 150" fill="#FF6B6B" class="brain-area"/>
+                <path id="embalagem" d="M320 150 Q 370 120, 420 150" fill="#4ECDC4" class="brain-area"/>
+                <path id="redes-sociais" d="M440 150 Q 490 120, 540 150" fill="#45B7D1" class="brain-area"/>
+                <path id="historia-marketing" d="M560 150 Q 610 180, 580 230" fill="#96CEB4" class="brain-area"/>
+                <path id="trafego-pago" d="M560 250 Q 600 280, 570 330" fill="#FFEEAD" class="brain-area"/>
+                <path id="copywriting" d="M540 350 Q 580 380, 550 430" fill="#D4A5A5" class="brain-area"/>
+                <path id="branding" d="M500 450 Q 540 480, 510 500" fill="#9B59B6" class="brain-area"/>
+                <path id="cores" d="M200 450 Q 240 480, 280 450" fill="#E74C3C" class="brain-area"/>
+                <path id="nomear-empresa" d="M160 350 Q 200 380, 240 350" fill="#F1C40F" class="brain-area"/>
+                <path id="seo" d="M140 250 Q 180 280, 220 250" fill="#2ECC71" class="brain-area"/>
+                <path id="identidade-visual" d="M300 250 Q 350 220, 400 250" fill="#E67E22" class="brain-area"/>
+                <path id="ecommerce" d="M300 350 Q 350 320, 400 350" fill="#3498DB" class="brain-area"/>
+                <path id="logos" d="M300 450 Q 350 420, 400 450" fill="#1ABC9C" class="brain-area"/>
+                
+                <!-- Textos -->
+                <text x="210" y="140" class="brain-text">Design Thinking</text>
+                <text x="330" y="140" class="brain-text">Embalagem</text>
+                <text x="450" y="140" class="brain-text">Redes Sociais</text>
+                <!-- ... adicionar os demais textos ... -->
+            </svg>
+        </div>
+
+        <!-- Seções de pastas -->
+        <div id="design-thinking-folder" class="folder-section">
+            <h2>Design Thinking</h2>
+            <input type="file" multiple>
+        </div>
+        <!-- ... repetir para todas as áreas ... -->
+
+        <div class="social-links">
+            <img src="/api/placeholder/40/40" alt="Instagram" class="social-icon">
+            <img src="/api/placeholder/40/40" alt="TikTok" class="social-icon">
+            <img src="/api/placeholder/40/40" alt="LinkedIn" class="social-icon">
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.brain-area').forEach(area => {
+            area.addEventListener('click', () => {
+                document.querySelectorAll('.brain-area').forEach(a => {
+                    a.classList.remove('active');
+                });
+                area.classList.add('active');
+                
+                document.querySelectorAll('.folder-section').forEach(folder => {
+                    folder.classList.remove('active');
+                });
+                
+                const folderId = area.id + '-folder';
+                document.getElementById(folderId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
